@@ -2,13 +2,46 @@ import { useForm } from "react-hook-form";
 import Error from "./Error";
 import type { DraftPatient } from "../types";
 import { usePatientStore } from "../store";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 export default function PatientForm() {
-  const addPatient = usePatientStore(state => state.addPatient)
-  const { register, handleSubmit, formState: { errors } } = useForm<DraftPatient>();
+  const addPatient = usePatientStore((state) => state.addPatient);
+  const updatePatient = usePatientStore((state) => state.updatePatient);
+  const activeId = usePatientStore((state) => state.activeId);
+  const patients = usePatientStore((state) => state.patients);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+  } = useForm<DraftPatient>();
+
+  useEffect(() => {
+    if (activeId) {
+      const activePatient = patients.filter(
+        (patient) => patient.id === activeId
+      )[0];
+
+      setValue("name", activePatient.name);
+      setValue("caretaker", activePatient.caretaker);
+      setValue("email", activePatient.email);
+      setValue("date", activePatient.date);
+      setValue("symptoms", activePatient.symptoms);
+    }
+  }, [activeId]);
 
   const registerPatient = (data: DraftPatient) => {
-    addPatient(data)
+    if (activeId) {
+      updatePatient(data);
+      toast.success('Paciente Editado')
+    } else {
+      addPatient(data);
+      toast.success('Paciente Registrado')
+    }
+    reset();
   };
 
   return (
@@ -56,9 +89,7 @@ export default function PatientForm() {
             })}
           />
 
-          {errors.caretaker && (
-            <Error>{errors.caretaker?.message}</Error>
-          )}
+          {errors.caretaker && <Error>{errors.caretaker?.message}</Error>}
         </div>
 
         <div className="mb-5">
@@ -117,7 +148,7 @@ export default function PatientForm() {
         <input
           type="submit"
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
-          value="Guardar Paciente"
+          value={activeId ? "Guardar Cambios" : "Crear Paciente"}
         />
       </form>
     </div>
