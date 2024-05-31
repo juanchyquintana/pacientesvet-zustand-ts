@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+# Registro de Pacientes de Veterinaria
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación para registrar pacientes de veterinarias, desarrollada con React, TypeScript, React Hook Form, Zustand y TailwindCSS. Permite a los usuarios llevar un control detallado de los pacientes, sus datos y visitas.
 
-Currently, two official plugins are available:
+## Tecnologías Utilizadas
+- **React:** Para construir la interfaz de usuario.
+- **TypeScript:** Para añadir tipado estático al código JavaScript.
+- **React Hook Form:** Para manejar formularios y validaciones.
+- **Zustand:** Para la gestión del estado global de la aplicación.
+- **TailwindCSS:** Para el diseño y estilizado de la aplicación.
+- **Vite:** Para un entorno de desarrollo rápido y eficiente.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Características
+- **Gestión de Pacientes:** Permite añadir, editar y eliminar registros de pacientes.
+- **Formularios Dinámicos:** Manejo de formularios y validaciones con React Hook Form.
+- **Estado Global con Zustand:** Gestión eficiente del estado global utilizando Zustand.
+- **Componentes Reutilizables:** La aplicación está dividida en componentes reutilizables para facilitar el mantenimiento y escalabilidad.
+- **Estilo con TailwindCSS:** Utiliza TailwindCSS para el diseño y estilizado de la aplicación.
 
-## Expanding the ESLint configuration
+## Dependencias
+- **react:** Librería para la construcción de interfaces de usuario.
+- **react-dom:** Librería para manipular el DOM.
+- **react-hook-form:** Para manejar formularios y validaciones.
+- **react-toastify:** Para notificaciones en la interfaz de usuario.
+- **uuid:** Para generar identificadores únicos.
+- **zustand:** Para la gestión del estado global de la aplicación.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Dependencias de Desarrollo
+- **autoprefixer:** Plugin para PostCSS que añade prefijos a CSS.
+- **postcss:** Herramienta para transformar CSS con plugins.
+- **tailwindcss:** Framework de CSS para diseño rápido.
+- **typescript:** Lenguaje de programación con tipado estático.
+- **vite:** Herramienta de desarrollo.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Instalación
+Clona este repositorio:
+```bash
+git clone https://github.com/juanchyquintana/pacientesvet-zustand-ts
